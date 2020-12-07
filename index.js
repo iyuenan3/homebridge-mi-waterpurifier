@@ -8,7 +8,7 @@ module.exports = function(homebridge) {
     if(!isConfig(homebridge.user.configPath(), "platforms", "MiWaterPurifierPlatform")) {
         return;
     }
-    
+
     PlatformAccessory = homebridge.platformAccessory;
     Accessory = homebridge.hap.Accessory;
     Service = homebridge.hap.Service;
@@ -36,7 +36,7 @@ function isConfig(configFile, type, name) {
         }
     } else {
     }
-    
+
     return false;
 }
 
@@ -44,28 +44,25 @@ function MiWaterPurifierPlatform(log, config, api) {
     if(null == config) {
         return;
     }
-    
+
     this.Accessory = Accessory;
     this.PlatformAccessory = PlatformAccessory;
     this.Service = Service;
     this.Characteristic = Characteristic;
     this.UUIDGen = UUIDGen;
-    
+
     this.log = log;
     this.config = config;
 
     if (api) {
         this.api = api;
     }
-    
-    
-    this.log.info("[MiWaterPurifier][INFO]*********************************************************************");
-    this.log.info("[Miwaterpurifier][INFO]                      Miwaterpurifier v%s                           *",packageFile.version);
-    this.log.info("[Miwaterpurifier][INFO] GitHub: https://github.com/Zzm317/homebridge-mi-water-purifier     *");
-    this.log.info("[Miwaterpurifier][INFO]                                                                    *");
-    this.log.info("[Miwaterpurifier][INFO]*********************************************************************");
-    this.log.info("[Miwaterpurifier][INFO]start success...");
-    
+
+    this.log.info("[MiWaterPurifierPlatform][INFO]***********************************************************************");
+    this.log.info("[MiWaterPurifierPlatform][INFO]          MiWaterPurifierPlatform v%s By Maxwell Li", packageFile.version);
+    this.log.info("[MiWaterPurifierPlatform][INFO]  GitHub: https://github.com/iyuenan3/homebridge-mi-waterpurifier");
+    this.log.info("[MiWaterPurifierPlatform][INFO]***********************************************************************");
+    this.log.info("[MiWaterPurifierPlatform][INFO]start success...");
 }
 
 MiWaterPurifierPlatform.prototype = {
@@ -73,14 +70,14 @@ MiWaterPurifierPlatform.prototype = {
         var myAccessories = [];
 
         var deviceCfgs = this.config['deviceCfgs'];
-        
+
         if(deviceCfgs instanceof Array) {
             for (var i = 0; i < deviceCfgs.length; i++) {
                 var deviceCfg = deviceCfgs[i];
                 if(null == deviceCfg['type'] || "" == deviceCfg['type'] || null == deviceCfg['token'] || "" == deviceCfg['token'] || null == deviceCfg['ip'] || "" == deviceCfg['ip']) {
                     continue;
                 }
-                
+
                 if (deviceCfg['type'] == "MiWaterPurifier") {
                     new MiWaterPurifier(this, deviceCfg).forEach(function(accessory, index, arr){
                         myAccessories.push(accessory);
