@@ -1,0 +1,28 @@
+{
+  "name": "homebridge-mi-waterpurifier",
+  "version": "0.0.1",
+  "description": "Mi Water Purifier Plugins for HomeBridge.(https://github.com/nfarina/homebridge).",
+  "keywords": [
+    "homebridge-plugin",
+    "xiaomi",
+    "mi",
+    "waterpurifier",
+    "plug"
+  ],
+  "author": "Maxwell Li",
+  "homepage": "https://github.com/iyuenan3/homebridge-mi-waterpurifier",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iyuenan3/homebridge-mi-waterpurifier"
+  },
+  "bugs": {
+    "url": "https://github.com/iyuenan3/homebridge-mi-waterpurifier/issues"
+  },
+  "engines": {
+    "node": ">=7.0.0",
+    "homebridge": ">=0.4.1"
+  },
+  "dependencies": {
+    "miio": "0.14.1"
+  }
+}
